@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">.button{cursor:pointer;}</style>
+<script type="text/javascript">
+studata=[['ROLL NUMBER','STUDENT NAME','COLLEGE NAME','MARKS','SEMESTER'],['1','Virat','IIT','100','8'],['2','Rohit','IIT','100','6'],['3','shikdar','JNU','90','6'],['4','Rahul','IIT','80','4'],['5','Dhoni','IISC','70','4'],['6','Hardik','IIM','80','8']]
+document.write("<table border='1px'>");
+for(i=0;i<studata.length;i++){
+document.write("<tr>")
+for(j=0;j<studata[i].length;j++){
+document.write("<td> "+studata[i][j]+"</td>")
+}
+document.write("</tr>")
+}
+document.write("</table>");
+
+function alpha(e){
+if(!( e.which >= 97 && e.which <= 122))
+{
+e.preventDefault(); //a-97 , A - 65
+}
+}
+function alphabets(e){
+if(!( e.which >= 65 && e.which<=90 || e.which >=97 && e.which<= 122))
+{
+e.preventDefault(); //a-97 , A - 65
+}
+}
+function hideImage()  { 
+document.getElementById('image').style.visibility ='hidden'; 
+} 
+function calc(){
+var a=document.getElementById('t1').value;
+var b=document.getElementById('t2').value;
+var sum= a+b;
+alert(sum);
+}
+function showCoords(event) {
+var x = event.clientX;
+var y = event.clientY;
+var coords = "X coords: " + x + ", Y coords: " + y;
+document.getElementById("demo").innerHTML = coords;
+}
+var windowObjectReference;
+var windowFeatures = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
+function openRequestedPopup() {
+windowObjectReference = window.open("http://www.google.com/", "GOOGLE_WindowName", windowFeatures);
+}
+function rupee()
+{
+dollar = document.getElementById("dollar").value;
+document.getElementById("result").innerHTML = dollar * 74.76;
+}
+
+</script>
+<title></title>
+</head>
+<body>
+	Enter only Lowercase:<input type="text" id="alpha" onkeypress="alpha(event)"><br>
+	Enter only Alphabets:<input type="text" id="alpha" onkeypress="alphabets(event)"><br>
+	Change style of a Pointer:<input type="submit" class="button" value="change" name="submit"><br>
+	Hide the image on clicking it<br><img src="girl.png" height="80px" id="image" onclick="hideImage()"><br>
+	Firstname:<input type="text" id="t1">Secondname:<input type="text" id="t2"><input type="submit" onclick="calc()"><br>
+	<h2 onclick="showCoords(event)">Click this heading to get the x (horizontal) and y (vertical) coordinates of the mouse pointer when it was clicked.</h2><p id="demo"></p><br>
+	<h4>The td colspan attribute</h4>
+	<table border="2px">
+    <tr><th>Name</th><th>Phone number</th><th>DOB</th><th>City</th><th>Country</th><th>% of work done</th></tr>
+    <tr><td>Suba</td><td>9876585200</td><td>09-11-1996</td><td rowspan="2">Chennai</td><td rowspan="6">India</td><td>20%</td></tr>
+  	<tr><td>Dinesh</td><td>9876590000</td><td>14-01-1997</td><td>10%</td></tr>
+  	<tr><td>Aarthi</td><td>9378585900</td><td>10-08-1995</td><td rowspan="2">karnataka</td></td><td>20%</td></tr>
+  	<tr><td>Shreyas</td><td>9872345200</td><td>21-05-1999</td><td>10%</td></tr>
+  	<tr><td>Sharan</td><td>9089367600</td><td>30-07-2000</td></td><td rowspan="2">Bangalore</td><td>20%</td></tr>
+  	<tr><td>Karthiga</td><td>9876585200</td><td>06-03-1998</td><td>20%</td></tr>
+  	<tr><td colspan="6" align="center">Total Percentage of work completed:100%</td></tr><br></table>
+  	<input type="submit" align="center" value="Open Window" name="submit" onclick="openRequestedPopup()"><br>
+  	<form>Enter the value in Dollar : <input type="number" id="dollar"><br><br>
+  	<input type="button" onClick="rupee()" Value="Coverter"></form><br>
+    Value in Rupees : <span id = "result"></span>
+</body>
+</html>
