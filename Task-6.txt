@@ -1,0 +1,157 @@
+SQL> create table Stock
+  2   (
+  3    StockID number primary key,
+  4    StockName varchar(20),
+  5    NumberOfStockImported number,
+  6    NumberOfStockSold number,
+  7    NumberOfStockDamaged number
+  8  );
+
+Table created.
+
+SQL>
+SQL> insert into Stock values('101','Pen','50','40','10');
+
+1 row created.
+
+SQL> insert into Stock values('102','Pencil','60','45','15');
+
+1 row created.
+
+SQL> insert into Stock values('103','Scales','45','40','5');
+
+1 row created.
+
+SQL> insert into Stock values('104','Earsers','20','15','5');
+
+1 row created.
+
+SQL> insert into Stock values('105','Sharpners','40','15','25');
+
+1 row created.
+
+SQL>
+SQL> create table Sales
+  2   (
+  3    SalesPersonID number,
+  4    SalesPersonName varchar(20),
+  5    StockID number references Stock(StockID),
+  6    StocksGiven number,
+  7    StocksSold number
+  8    );
+
+Table created.
+
+SQL> insert into Sales('01','Ram','101','40','30');
+insert into Sales('01','Ram','101','40','30')
+                  *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> select *from stock;
+
+   STOCKID STOCKNAME            NUMBEROFSTOCKIMPORTED NUMBEROFSTOCKSOLD
+---------- -------------------- --------------------- -----------------
+NUMBEROFSTOCKDAMAGED
+--------------------
+       101 Pen                                     50                40
+                  10
+
+       102 Pencil                                  60                45
+                  15
+
+       103 Scales                                  45                40
+                   5
+
+
+   STOCKID STOCKNAME            NUMBEROFSTOCKIMPORTED NUMBEROFSTOCKSOLD
+---------- -------------------- --------------------- -----------------
+NUMBEROFSTOCKDAMAGED
+--------------------
+       104 Earsers                                 20                15
+                   5
+
+       105 Sharpners                               40                15
+                  25
+
+
+SQL> insert into Sales values('01','Ram','101','50','40');
+
+1 row created.
+
+SQL> insert into Sales values('02','Ravi','102','60','45');
+
+1 row created.
+
+SQL> insert into Sales values('03','Raghul','103','45','40');
+
+1 row created.
+
+SQL> insert into Sales values('04','Ramya','104','20','15');
+
+1 row created.
+
+SQL> insert into Sales values('05','Raj','105','40','15');
+
+1 row created.
+
+SQL> select *from Sales
+  2  ;
+
+SALESPERSONID SALESPERSONNAME         STOCKID STOCKSGIVEN STOCKSSOLD
+------------- -------------------- ---------- ----------- ----------
+            1 Ram                         101          50         40
+            2 Ravi                        102          60         45
+            3 Raghul                      103          45         40
+            4 Ramya                       104          20         15
+            5 Raj                         105          40         15
+
+SQL>
+
+
+
+
+SQL> SELECT TO_CHAR(CURRENT_DATE, 'DD-MON-YYYY HH:MI:SS') FROM dual;
+
+TO_CHAR(CURRENT_DATE,'DD-MON-
+-----------------------------
+28-JUL-2020 07:11:25
+
+SQL>
+SQL> SELECT TO_CHAR(CURRENT_DATE, 'DD-MON-YYYY') FROM dual;
+
+TO_CHAR(CURRENT_DATE
+--------------------
+28-JUL-2020
+
+SQL>
+SQL> SELECT TO_CHAR(CURRENT_DATE, 'DD-MM-YYYY') FROM dual;
+
+TO_CHAR(CU
+----------
+28-07-2020
+
+SQL>
+SQL> SELECT TO_CHAR(CURRENT_DATE, 'Day') FROM dual;
+
+TO_CHAR(CURRENT_DATE,'DAY')
+------------------------------------
+Tuesday
+
+SQL>
+SQL> SELECT TO_CHAR
+  2      (SYSDATE + 10, 'DD-MM-YYYY') "NOW"
+  3       FROM DUAL;
+
+NOW
+----------
+07-08-2020
+
+SQL>
+
+
+
+
+
+
