@@ -1,0 +1,46 @@
+SQL> create table Timetable
+  2  (
+  3  Day varchar(10),
+  4  SessionNum int,
+  5  Room_Number int,
+  6  Faculty_Name varchar(20),
+  7  Semester int,
+  8  Subject varchar(20),
+  9  constraint TT unique (Day,SessionNum,Room_Number),
+ 10  constraint TT1 unique (Day,SessionNum,Faculty_Name),
+ 11  constraint TT2 unique (Day,SessionNum,Semester)
+ 12  );
+
+Table created.
+
+SQL> insert into Timetable values('mon','1','1','Raj','1','Java');
+
+1 row created.
+
+SQL> insert into Timetable values('mon','1','2','Ram','1','Jee');
+insert into Timetable values('mon','1','2','Ram','1','Jee')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SUBA.TT2) violated
+
+
+SQL> insert into Timetable values('mon','1','2','Ram','3','Java');
+
+1 row created.
+
+SQL> insert into Timetable values('mon','1','1','John','5','DBMS');
+insert into Timetable values('mon','1','1','John','5','DBMS')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SUBA.TT) violated
+
+
+SQL> insert into Timetable values('mon','2','1','John','5','DBMS');
+
+1 row created.
+
+SQL> insert into Timetable values('tue','1','1','John','5','DBMS');
+
+1 row created.
+
+SQL>
