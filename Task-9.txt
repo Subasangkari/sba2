@@ -1,0 +1,266 @@
+SQL> create table EmpDetails
+  2  (
+  3  EmpFName varchar(20),
+  4  EmpMName varchar(20),
+  5  EmpLName varchar(20),
+  6  EmpAge int,
+  7  constraint age check(EmpAge between 0 and 49),
+  8  EmpCity varchar(20),
+  9  constraint city check (EmpCity LIKE'B%'),
+ 10  EmpDesignation varchar(20),
+ 11  constraint desg check (EmpDesignation LIKE'%manager'),
+ 12  EmpID varchar(5) primary key check (EmpID LIKE'emp%'),
+ 13  constraint ckt check(length(EmpID)=5),
+ 14  EmpDOB date
+ 15  );
+
+Table created.
+
+SQL>
+SQL> insert into EmpDetails values('suba','sangkari','saravanan','22','Bangalore','sales manager','emp01','14-Aug-98');
+
+1 row created.
+
+SQL> insert into EmpDetails values('Preety','Dinesh','Kumar','21','Bhopal','Account manager','emp02','19-Nov-98');
+
+1 row created.
+
+SQL> insert into EmpDetails values('Pritha','shreyas','somanathan','20','Bombay','General manager','emp03','23-Jan-99');
+
+1 row created.
+
+SQL> insert into EmpDetails values('Aarthi','Ranganathan','Kailash','20','Bhubaneshwar ','Associate manager','emp04','22-Jan-99');
+
+1 row created.
+
+SQL> insert into EmpDetails values('Karthiga','Dhilip','Kumar','20','Bhilai','Revenue manager','emp05','11-Jun-99');
+
+1 row created.
+
+SQL>
+SQL> select *from EmpDetails;
+
+EMPFNAME             EMPMNAME             EMPLNAME                 EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+suba                 sangkari             saravanan                    22
+Bangalore            sales manager        emp01 14-AUG-98
+
+Preety               Dinesh               Kumar                        21
+Bhopal               Account manager      emp02 19-NOV-98
+
+Pritha               shreyas              somanathan                   20
+Bombay               General manager      emp03 23-JAN-99
+
+
+EMPFNAME             EMPMNAME             EMPLNAME                 EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+Aarthi               Ranganathan          Kailash                      20
+Bhubaneshwar         Associate manager    emp04 22-JAN-99
+
+Karthiga             Dhilip               Kumar                        20
+Bhilai               Revenue manager      emp05 11-JUN-99
+
+
+SQL>
+SQL> update EmpDetails set EmpCity='Bijapur'
+  2  where EmpID='emp01';
+
+1 row updated.
+
+SQL>
+SQL> select *from EmpDetails;
+
+EMPFNAME             EMPMNAME             EMPLNAME                 EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+suba                 sangkari             saravanan                    22
+Bijapur              sales manager        emp01 14-AUG-98
+
+Preety               Dinesh               Kumar                        21
+Bhopal               Account manager      emp02 19-NOV-98
+
+Pritha               shreyas              somanathan                   20
+Bombay               General manager      emp03 23-JAN-99
+
+
+EMPFNAME             EMPMNAME             EMPLNAME                 EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+Aarthi               Ranganathan          Kailash                      20
+Bhubaneshwar         Associate manager    emp04 22-JAN-99
+
+Karthiga             Dhilip               Kumar                        20
+Bhilai               Revenue manager      emp05 11-JUN-99
+
+
+SQL>
+SQL> delete from EmpDetails
+  2  where EmpID='emp01';
+
+1 row deleted.
+
+SQL>
+SQL> select *from EmpDetails;
+
+EMPFNAME             EMPMNAME             EMPLNAME                 EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+Preety               Dinesh               Kumar                        21
+Bhopal               Account manager      emp02 19-NOV-98
+
+Pritha               shreyas              somanathan                   20
+Bombay               General manager      emp03 23-JAN-99
+
+Aarthi               Ranganathan          Kailash                      20
+Bhubaneshwar         Associate manager    emp04 22-JAN-99
+
+
+EMPFNAME             EMPMNAME             EMPLNAME                 EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+Karthiga             Dhilip               Kumar                        20
+Bhilai               Revenue manager      emp05 11-JUN-99
+
+
+SQL>
+SQL> delete from EmpDetails;
+
+4 rows deleted.
+
+SQL>
+SQL> select *from EmpDetails;
+
+no rows selected
+
+SQL>
+SQL> insert into EmpDetails values('suba','sangkari','saravanan','22','Bangalore','sales manager','emp01','14-Aug-98');
+
+1 row created.
+
+SQL> insert into EmpDetails values('Preety','Dinesh','Kumar','21','Bhopal','Account manager','emp02','19-Nov-98');
+
+1 row created.
+
+SQL> insert into EmpDetails values('Pritha','shreyas','somanathan','20','Bombay','General manager','emp03','23-Jan-99');
+
+1 row created.
+
+SQL> insert into EmpDetails values('Aarthi','Ranganathan','Kailash','20','Bhubaneshwar ','Associate manager','emp04','22-Jan-99');
+
+1 row created.
+
+SQL> insert into EmpDetails values('Karthiga','Dhilip','Kumar','20','Bhilai','Revenue manager','emp05','11-Jun-99');
+
+1 row created.
+
+SQL>
+SQL> select *from EmpDetails;
+
+EMPFNAME             EMPMNAME             EMPLNAME                 EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+suba                 sangkari             saravanan                    22
+Bangalore            sales manager        emp01 14-AUG-98
+
+Preety               Dinesh               Kumar                        21
+Bhopal               Account manager      emp02 19-NOV-98
+
+Pritha               shreyas              somanathan                   20
+Bombay               General manager      emp03 23-JAN-99
+
+
+EMPFNAME             EMPMNAME             EMPLNAME                 EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+Aarthi               Ranganathan          Kailash                      20
+Bhubaneshwar         Associate manager    emp04 22-JAN-99
+
+Karthiga             Dhilip               Kumar                        20
+Bhilai               Revenue manager      emp05 11-JUN-99
+
+
+SQL>
+SQL> commit;
+
+Commit complete.
+
+SQL>
+SQL> delete from EmpDetails;
+
+5 rows deleted.
+
+SQL>
+SQL> select *from EmpDetails;
+
+no rows selected
+
+SQL>
+SQL> rollback;
+
+Rollback complete.
+
+SQL>
+SQL> select *from EmpDetails;
+
+EMPFNAME             EMPMNAME             EMPLNAME                 EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+suba                 sangkari             saravanan                    22
+Bangalore            sales manager        emp01 14-AUG-98
+
+Preety               Dinesh               Kumar                        21
+Bhopal               Account manager      emp02 19-NOV-98
+
+Pritha               shreyas              somanathan                   20
+Bombay               General manager      emp03 23-JAN-99
+
+
+EMPFNAME             EMPMNAME             EMPLNAME                 EMPAGE
+-------------------- -------------------- -------------------- ----------
+EMPCITY              EMPDESIGNATION       EMPID EMPDOB
+-------------------- -------------------- ----- ---------
+Aarthi               Ranganathan          Kailash                      20
+Bhubaneshwar         Associate manager    emp04 22-JAN-99
+
+Karthiga             Dhilip               Kumar                        20
+Bhilai               Revenue manager      emp05 11-JUN-99
+
+
+SQL>
+SQL>
+SQL> SELECT EmpFName ||' ' || EmpMName || ' ' || EmpLName as EmpFullName, TO_CHAR(TO_DATE(EmpDOB,'DD-MON-YY'),'DD-MM-YYYY') as DateOfBirth FROM EmpDetails;
+
+EMPFULLNAME                                                    DATEOFBIRT
+-------------------------------------------------------------- ----------
+suba sangkari saravanan                                        14-08-2098
+Preety Dinesh Kumar                                            19-11-2098
+Pritha shreyas somanathan                                      23-01-2099
+Aarthi Ranganathan Kailash                                     22-01-2099
+Karthiga Dhilip Kumar                                          11-06-2099
+
+SQL>
+SQL> select SUBSTR(EmpFName,1,1)||'.'||SUBSTR(EmpMName,1,1)||'.'||EmpLName as EmpName FROM EmpDetails;
+
+EMPNAME
+------------------------------
+s.s.saravanan
+P.D.Kumar
+P.s.somanathan
+A.R.Kailash
+K.D.Kumar
+
+SQL>
+
+
+
