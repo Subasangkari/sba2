@@ -1,0 +1,80 @@
+SQL> create table customer
+  2    (
+  3     cname varchar(20),
+  4     cid int
+  5    );
+
+Table created.
+
+SQL>
+SQL>
+SQL> create table customer_backup
+  2    (
+  3     cname varchar(20),
+  4     cid int
+  5     );
+
+Table created.
+
+SQL>
+SQL> create trigger trgBgup
+  2  after insert
+  3  on customer
+  4  for each row
+  5  begin
+  6  insert into customer_backup values(:new.cname,:new.cid);
+  7  end;
+  8  /
+
+Trigger created.
+
+SQL>
+SQL>
+SQL> insert into customer values('Ram','101');
+
+1 row created.
+
+SQL> insert into customer values('Raj','102');
+
+1 row created.
+
+SQL> insert into customer values('Ravi','103');
+
+1 row created.
+
+SQL> insert into customer values('Rama','104');
+
+1 row created.
+
+SQL> insert into customer values('Raghul','105');
+
+1 row created.
+
+SQL>
+SQL>
+SQL> select *from customer;
+
+CNAME                       CID
+-------------------- ----------
+Ram                         101
+Raj                         102
+Ravi                        103
+Rama                        104
+Raghul                      105
+
+SQL> select *from customer_backup;
+
+CNAME                       CID
+-------------------- ----------
+Ram                         101
+Raj                         102
+Ravi                        103
+Rama                        104
+Raghul                      105
+
+SQL>
+
+
+
+
+
