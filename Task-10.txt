@@ -1,0 +1,148 @@
+
+SQL> create table clg
+  2  (
+  3  cid int primary key,
+  4  clgName varchar(20)
+  5  );
+
+Table created.
+
+SQL> insert into clg values('121','IIT');
+
+1 row created.
+
+SQL> insert into clg values('122','JNU');
+
+1 row created.
+
+SQL> insert into clg values('123','SRM');
+
+1 row created.
+
+SQL> create table stud
+  2  (
+  3  stud_id int primary key,
+  4  clg_id int references clg(cid),
+  5  gender varchar(6),
+  6  sem int,
+  7  marks int
+  8  );
+
+Table created.
+
+SQL> alter table stud
+  2  add sname varchar(20);
+
+Table altered.
+
+SQL>
+SQL> insert into stud values('101','121','male','1','67','Rohit');
+
+1 row created.
+
+SQL> insert into stud values('102','121','male','3','67','Rahul');
+
+1 row created.
+
+SQL> insert into stud values('103','121','female','1','67','rajeshwari');
+
+1 row created.
+
+SQL> insert into stud values('104','121','male','5','67','Virat');
+
+1 row created.
+
+SQL>
+SQL>
+SQL> insert into stud values('105','122','male','5','67','Dawan');
+
+1 row created.
+
+SQL> insert into stud values('106','122','female','3','67','smrithi');
+
+1 row created.
+
+SQL> insert into stud values('107','122','female','1','67','harampreet');
+
+1 row created.
+
+SQL> insert into stud values('108','122','male','5','67','DK');
+
+1 row created.
+
+SQL>
+SQL>
+SQL> insert into stud values('109','123','male','5','67','Dhoni');
+
+1 row created.
+
+SQL> insert into stud values('110','123','male','5','67','Hardik');
+
+1 row created.
+
+SQL> insert into stud values('111','123','female','3','67','Shifali');
+
+1 row created.
+
+SQL> insert into stud values('112','123','male','3','67','Jadeja');
+
+1 row created.
+
+SQL> insert into stud values('113','123','male','3','67','kuldeep');
+
+1 row created.
+
+SQL>
+SQL> select *from stud;
+
+   STUD_ID     CLG_ID GENDER        SEM      MARKS SNAME
+---------- ---------- ------ ---------- ---------- --------------------
+       101        121 male            1         67 Rohit
+       102        121 male            3         67 Rahul
+       103        121 female          1         67 rajeshwari
+       104        121 male            5         67 Virat
+       105        122 male            5         67 Dawan
+       106        122 female          3         67 smrithi
+       107        122 female          1         67 harampreet
+       108        122 male            5         67 DK
+       109        123 male            5         67 Dhoni
+       110        123 male            5         67 Hardik
+       111        123 female          3         67 Shifali
+
+   STUD_ID     CLG_ID GENDER        SEM      MARKS SNAME
+---------- ---------- ------ ---------- ---------- --------------------
+       112        123 male            3         67 Jadeja
+       113        123 male            3         67 kuldeep
+
+13 rows selected.
+
+SQL>
+SQL> select count(sname) , sem ,clg_id
+  2  from stud
+  3  group by sem,clg_id;
+
+COUNT(SNAME)        SEM     CLG_ID
+------------ ---------- ----------
+           2          5        122
+           1          1        122
+           1          3        122
+           3          3        123
+           2          1        121
+           1          3        121
+           1          5        121
+           2          5        123
+
+8 rows selected.
+
+SQL>
+SQL> select count(sname) , sem
+  2  from stud
+  3  group by sem;
+
+COUNT(SNAME)        SEM
+------------ ----------
+           3          1
+           5          5
+           5          3
+
+SQL>
