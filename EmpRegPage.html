@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee Registration Form</title>
+	<style>
+body{
+  background-color: black;
+  background-repeat: no-repeat;  
+
+}
+form{
+  background-color: white;
+  background-repeat: no-repeat;
+}
+.table
+ {
+  position:relative;
+ 	left:500px; 
+ 	top:230px;
+ 	width: 30%;
+  color: white;
+}
+</style>
+<script type="text/javascript">
+
+
+var degreeObject = {
+"Graduation": { "B.Tech.,/B.E.,":["EEE","ECE","CSE","Mech"],
+"Bachelors of Arts": ["B.Com.,", "B.B.A.,","B.A.,","B.L.,"],
+},
+"Post-Graduation": {
+"M.Tech.,/M.E.,":["EEE","ECE","CSE","Mech"],
+"Masters of Arts": ["M.Com.,", "M.B.A.,","M.A.,","M.L.,"],
+}, 
+"Diploma": {
+"Diploma in Engineering": ["EEE", "CSE","IT"],
+"ITA": ["IT", "CSE","Mech"]
+},
+}
+window.onload = function () {
+var qualificationSel = document.getElementById("qualificationSel"),
+degreeSel = document.getElementById("degreeSel"),
+courseSel = document.getElementById("courseSel");
+for (var qualification in degreeObject) {
+qualificationSel.options[qualificationSel.options.length] = new Option(qualification, qualification);
+}
+qualificationSel.onchange = function () {
+degreeSel.length = 1; // remove all options bar first
+courseSel.length = 1; // remove all options bar first
+if (this.selectedIndex < 1) return; // done
+for (var degree in degreeObject[this.value]) {
+degreeSel.options[degreeSel.options.length] = new Option(degree, degree);
+}
+}
+qualificationSel.onchange(); // reset in case page is reloaded
+degreeSel.onchange = function () {
+courseSel.length = 1; // remove all options bar first
+if (this.selectedIndex < 1) return; // done
+var course = degreeObject[qualificationSel.value][this.value];
+for (var i = 0; i < course.length; i++) {
+courseSel.options[courseSel.options.length] = new Option(course[i], course[i]);
+}
+}
+}
+
+function pwdvalidate()
+{
+var pwd= document.getElementById('pwd').value;
+var isCaps=false;
+var isNum=false;
+var isSmall=false;
+var isSpl=false;
+if(pwd.length<9)
+{
+return false;
+}
+else
+{
+for(i=0;i<pwd.length;i++)
+{
+if(pwd[i] >='A' && pwd[i]<='Z')
+{
+isCaps=true;
+break;
+}
+}
+for(i=0;i<pwd.length;i++)
+{
+if(pwd[i] >='0' && pwd[i]<='9')
+{
+isNum=true;
+break;
+}
+}
+for(i=0;i<pwd.length;i++)
+{
+if(pwd[i] >='a' && pwd[i]<='z')
+{
+isSmall=true;
+break;
+}
+}
+for(i=0;i<pwd.length;i++)
+{
+if(!(pwd[i] >='a' && pwd[i]<='z')||(pwd[i] >='0' && pwd[i]<='9')||(pwd[i] >='A' && pwd[i]<='Z'))
+{
+isSpl=true;
+break;
+}
+}
+if(isNum && isCaps && isSmall && isSpl){
+alert('password accepted'); 
+return true;
+}
+else 
+{
+alert('inavlid password');
+return false;
+}
+}
+}
+ function checkPassword(form) { 
+                password1 = form.password1.value; 
+                password2 = form.password2.value; 
+                if (password1 == '') 
+                    alert ("Please enter Password");  
+                else if (password2 == '') 
+                    alert ("Please enter confirm password");   
+                else if (password1 != password2) { 
+                    alert ("\nPassword did not match: Please try again...") 
+                    return false; 
+                }
+                else{ 
+                    alert("Welcome to GeeksforGeeks! java full stack-course") 
+                    return true; 
+                } 
+            } 
+	
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<
+<div style="position:absolute; left:530px; top:160px;font-family:algerian;color: white;"><h1>NEW ACCOUNT?</h1><br></div>
+<table class="table">
+<form action="https://www.google.com/" onSubmit = "return checkPassword(this)">
+<div style="position:absolute; left:500px; top:200px;">
+<tr><td><label for="text"><i class="fa fa-user"/i>Employee Name:</label></td>
+<td><input type="text" name="fullName" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" placeholder="Employee Name"><br></td></tr>
+
+<tr><td><label for="text"><i class="fa fa-birthday-cake"/i>Date of Birth:</label></td>
+    <td><input type="date" min="1990-01-01" max="2002-12-31"></style><br></td></tr>
+
+
+<tr><td><label for="Qualification"><i class="fa fa-graduation-cap"/i>Qualification:</label></td>
+<td><select name="degree" id="qualificationSel" size="1"><option value="" selected="selected">Select Qualification</option>
+</select><br></td></tr>
+<tr><td><label for="Graduation"><i class="fa fa-graduation-cap"></i>Graduation:</label></td>
+<td><select name="qualification" id="degreeSel" size="1"><option value="" selected="selected">Please select Qualification first</option>
+</select><br></td></tr>
+<tr><td><label for="Graduation"><i class="fa fa-graduation-cap"></i>Degree:</label></td>
+<td><select name="course" id="courseSel" size="1"><option value="" selected="selected">Please select Degree first</option>
+</select><br></td></tr>
+
+
+
+<tr><td><label for="number"><i class="fa fa-phone"/i>Phone Number:</label></td>
+    <td><input type="number"name="Phonenumber" placeholder="Phone Number"><br></td></tr>
+    <tr><td><label for="e-mail"><i class="fa fa-envelope"/i>E-mail:</label></td>
+    <td><input type="e-mail"name="E-mail" placeholder="E-mail Id"><br></td></tr>
+
+
+    
+<tr><td><label for="Password"><i class="fa fa-lock"/i>Password:</label></td>
+    <td><input type="Password" name="password1" placeholder="Password" id="pwd"><br></td></tr>
+    <tr><td><label for="Password" id="pwd"><i class="fa fa-lock"/i>Confirm Password:</label></td>
+    <td><input type="Password"name="password2" placeholder="Confirm Password"><br></td></tr>
+
+
+
+</body>
+</div>
+<div style="position:absolute; left:600px; top:500px;">
+<input type="submit" name="submit" value="Register" onclick="pwdvalidate()">
+</div>
+</table>
+</form>
+</div>
+</body>
+</html>
